@@ -5,32 +5,27 @@ ___TO-DO___
 
 import sqlite3 as sl
 class bookshelf():
-    def __init__(self,ad,yayınevi,yazar) -> None:
+    def __init__(self,ad,yayınevi,yazar):
         self.ad=ad
         self.yevi=yayınevi
         self.yazar=yazar
 
+    @staticmethod
     def tablo_olustur():
-        db= sl.connect("kitaplık.db")
-        crsr=db.cursor()    
-        crsr.execute("""CREATE TABLE IF NOT EXISTS KİTAPLIK(
-                    AD text,
-                    YAYIN_EVİ text,
-                    YAZAR text
-        )""")
-        db.commit()
-        db.close()
+        with sl.connect("kitaplık.db") as conn:
+            cursor = conn.cursor()
+            cursor.execute("""CREATE TABLE IF NOT EXISTS kitaplık(
+                            ad text,
+                            yayın_evi text,
+                            yazar text
+                        )""")
 
-    def ekle(kitap):
-        db= sl.connect("kitaplık.db")
-        crsr=db.cursor()
-        bookshelf.tablo_olustur()
-        crsr.execute("INSERT INTO KİTAPLIK VALUES (?,?,?)",(kitap))
-        db.commit()
-        db.close()
+    def ekle(self):
+        with sl.connect("kitaplık.db") as conn:
+            bookshelf.tablo_olustur()
+            cursor = conn.cursor()
+            cursor.execute("INSERT INTO kitaplık VALUES (?, ?, ?)", (self.ad, self.yevi, self.yazar))
 
 book=bookshelf(input("Kitap adı giriniz:"),input("Yayın evini giriniz:"),input("Yazarı giriniz:"))
-kitap=(book.ad,book.yazar,book.yevi)
-print(kitap)
 
-bookshelf.ekle(kitap)
+bookshelf.ekle(book)
