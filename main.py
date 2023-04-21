@@ -16,7 +16,7 @@ class bookshelf():
         crsr.execute("""CREATE TABLE IF NOT EXISTS KİTAPLIK(
                     AD text,
                     YAYIN_EVİ text,
-                 YAZAR text
+                    YAZAR text
         )""")
         db.commit()
         db.close()
@@ -29,7 +29,7 @@ class bookshelf():
         db.commit()
         db.close()
 
-book=bookshelf("drga","tgatha","hath")
+book=bookshelf(input("Kitap adı giriniz:"),input("Yayın evini giriniz:"),input("Yazarı giriniz:"))
 kitap=(book.ad,book.yazar,book.yevi)
 print(kitap)
 
