@@ -1,9 +1,5 @@
 from bookshelf import * 
 
-"""
-___TO-DO___
--sqlite entegre et
-"""
 
 def tanımla():
     global book
@@ -14,8 +10,7 @@ def secim():
     1)kitap ekle
     2)kitap çıkar
     3)listele
-    işlemi seçiniz:
-    """)
+    işlemi seçiniz:""")
     match i:
         case "1":
             tanımla()
