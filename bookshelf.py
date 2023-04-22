@@ -16,6 +16,7 @@ class bookshelf():
                             yazar text
                         )""")
             
+    @staticmethod
     def listele():
         with sl.connect("kitaplık.db") as conn:
             cursor=conn.cursor()
@@ -29,7 +30,7 @@ class bookshelf():
             termtables.print(liste,başlık)
                 
 
-                    
+    @staticmethod
     def sil():
         with sl.connect("kitaplık.db") as conn:
             cursor=conn.cursor()
