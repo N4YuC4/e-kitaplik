@@ -22,5 +22,7 @@ def secim():
         case "3":
             bookshelf.listele()
             secim()
+        case _:
+            secim()
 
 secim()

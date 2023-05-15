@@ -27,8 +27,11 @@ class bookshelf():
             başlık=["No.","Kitap İsmi","Yayın Evi","Yazar"]
             for satır,s_id in zip(cursor.fetchall(),range(1,satır_sayısı+1)):
                 liste.append([s_id,satır[0],satır[1],satır[2]])
-            termtables.print(liste,başlık)
+            try:
                 
+                termtables.print(liste,başlık)
+            except ValueError:
+                print("veri bulunamadı")
 
     @staticmethod
     def sil():
